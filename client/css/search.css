@@ -1,0 +1,80 @@
+.search-page-example {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 10px;
+    padding: 10px;
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.search-content {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    flex-direction: column;
+}
+
+.filters {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+}
+
+.filter-block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.price-inputs {
+    display: flex;
+    gap: 5px;
+}
+
+.price-inputs input {
+    width: 50%;
+}
+
+.filter-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.results {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.post-item {
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.post-image {
+    height: 80px;
+}
+
+.post-name,
+.price,
+.location {
+    height: 20px;
+}
+
+.load-more {
+    grid-column: 1 / -1;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+}

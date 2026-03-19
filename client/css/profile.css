@@ -1,0 +1,82 @@
+.profile-page-example{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 10px;
+    padding: 10px;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-card{
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+}
+
+.profile-image {
+    height: 120px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+
+.member-since,
+.edit-profile-btn{
+    margin-top: 5px;
+}
+
+.profile-image{
+    width: 120px;
+    height: 120px;
+}
+
+.profile-menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.menu-item{
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+}
+
+.posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.post {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profile-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.show-more-btn {
+    grid-column: 1 /-1;
+    height: 40px;
+    text-align: center;
+}
+
+
+

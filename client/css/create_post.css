@@ -1,0 +1,68 @@
+.createpost-page {
+    display: flex;
+    flex-direction: column;
+    
+    min-height: 100vh;
+    gap: 10px;
+    padding: 10px;
+}
+
+.createpost-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* TITLE */
+.form-title {
+    text-align: center;
+}
+
+/* FORM BLOCK */
+.form-block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* INPUTS */
+.form-input {
+    height: 35px;
+}
+
+.form-textarea {
+    height: 100px;
+}
+
+/* DROPDOWN MOCK */
+.dropdown {
+    height: 35px;
+}
+
+/* IMAGE UPLOAD */
+.image-upload {
+    display: flex;
+    gap: 10px;
+}
+
+.upload-box {
+    width: 80px;
+    height: 80px;
+}
+
+/* ACTION BUTTONS */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.submit-btn,
+.cancel-btn {
+    flex: 1;
+    height: 40px;
+}
