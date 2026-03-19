@@ -9,33 +9,34 @@
     gap: 5px;
     height: 100vh;
     padding: 5px;
+    min-width: 414;
 }
 
 /* Search section*/
-.search-section {
+.main-page .search {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
 }
 
-.search-bar {
-    width: 250px;
+.search_input {
+    width: 220px;
     height: 35px;
 }
 
-.search-location {
+.search_location {
+    width: 80px;
+    height: 35px;
+}
+
+.search_button {
     width: 50px;
     height: 35px;
 }
 
-.search-button {
-    width: 40px;
-    height: 35px;
-}
-
 /* Categories section*/
-#categories-section{
+.main-page #categories{
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -55,31 +56,33 @@
     width: 60px;
     height: 60px;
     text-align: center;
+    font-size: small;
 }
 
 /* Post section*/
-.post-section {
+.main-page .posts {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 5px;
-    padding: 5px;
+
 }
 
-.post-item {
-    height: auto;
+.post-card {
     display: flex;
     flex-direction: column;
-    padding: 1px;
 }
 
-.post-image {
-    flex: 1;
-    height: 80px;
+.post-card_image {
+    height: 120px;
     background-color: #ccc;
 }
+.post-card_title,
+.post-card_price,
+.post-card_location {
+    font-size: 12px;
+}
 
-#load-more {
+#posts_load-more {
     grid-column: 1/ -1;
     text-align: center;
-    font-size: 14px;
 }

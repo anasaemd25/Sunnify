@@ -1,5 +1,7 @@
-div {
-    border: 1px solid black;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .header {
@@ -9,26 +11,17 @@ div {
     justify-content: space-between;
 }
 
-.logo {
-    width: 40px;
-    height: 40px;
-}
-
-.sell {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-}
-
-.auth {
-    width:45px;
+.header_logo,
+.header_sell,
+.header_auth {
+    width:50px;
     height: 40px;
     text-align: center;
 }
 
 .footer {
     display: flex;
-    flex-direction: row;
+    gap: 10px;
     align-items: center;
     justify-content: center;
 }
