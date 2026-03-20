@@ -21,28 +21,32 @@
             <h1 class="auth_title">Create account</h1>
 
             <form class="auth-form">
-                
-            <div class="auth-form_group">
-                <label for="reg-username">Username</label>
-                <input id="reg-username" type="text" class="auth-form_input">
-            </div>
 
-            <div class="auth-form_group">
-                <label for="email">Email</label>
-                <input id="email" type="email" class="auth-form_input">
-            </div>
+                <div class="auth-form_group">
+                    <label for="reg-username">Username</label>
+                    <input id="reg-username" type="text" class="auth-form_input">
+                    <span id="username-span"></span>
+                </div>
 
-            <div class="auth-form_group">
-                <label for="reg-password">Password</label>
-                <input id="reg-password" type="password" class="auth-form_input">
-            </div>
+                <div class="auth-form_group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="auth-form_input">
+                    <span id="email-span"></span>
+                </div>
 
-            <div class="auth-form_group">
-                <label for="confirm-password">Confirm Password</label>
-                <input id="confirm-password" type="password" class="auth-form_input">
-            </div>
+                <div class="auth-form_group">
+                    <label for="reg-password">Password</label>
+                    <input id="reg-password" type="password" class="auth-form_input">
+                    <span id="reg-password-span"></span>
+                </div>
 
-            <button class="auth-form_submit">Register</button>
+                <div class="auth-form_group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input id="confirm-password" type="password" class="auth-form_input">
+                    <span id="confirm-password-span"></span>
+                </div>
+
+                <button class="auth-form_submit">Register</button>
             </form>
             <div class="auth_switch">Already have an account? <a href="login.html">Log in</a></div>
         </section>
@@ -50,5 +54,6 @@
             <div class="footer_logo"></div>
             <div class="footer_content">© 2026 Sunnify. All rights reserved.</div>
         </footer>
+        <script src="./js/register.js" type="module"></script>
 </body>
 </html>
