@@ -4,11 +4,24 @@ const { encryptPassword, verifyPassword } = require("../helpers/pwEncrypt.js");
 
 const sunnifyRouter = express.Router();
 
-sunnifyRouter.get("/register", async (req, res) => {
-    res.status(200).json({ message: "OK" });
-})
+// Middleware stuff
+const isUserAuthenticated = (req, res, next) => {
+    if (!req.session.userId) {
+        return res.status(401).json({ error: "Not authenticated!" });
+    }
+    next();
+};
 
-sunnifyRouter.post("/register", async (req, res) => {
+const preventAuthAccess = (req, res, next) => {
+    if (req.session.userId) {
+        return res.status(403).json({ error: "Already logged in" });
+    }
+    next();
+};
+
+
+// Routes handling
+sunnifyRouter.post("/register", preventAuthAccess, async (req, res) => {
     try {
         // Check if user already exists
         let result = await query("SELECT * FROM users");
@@ -41,7 +54,7 @@ sunnifyRouter.post("/register", async (req, res) => {
     }
 });
 
-sunnifyRouter.post("/login", async (req, res) => {
+sunnifyRouter.post("/login", preventAuthAccess, async (req, res) => {
     try {
         const loginIdentifier = req.body.usernameOrEmail;
 
@@ -70,6 +83,9 @@ sunnifyRouter.post("/login", async (req, res) => {
             return;
         }
 
+        req.session.userId = user.id;
+        req.session.username = user.username;
+
         res.status(200).json({ message: "Login success!", id: user.id });
 
         // Update last_login in database
@@ -79,21 +95,24 @@ sunnifyRouter.post("/login", async (req, res) => {
     }
 });
 
+sunnifyRouter.post("/logout", (req, res) => {
+    req.session.destroy(err => {
+        if (err) errorResponse(res, "Logout failed");
+        res.clearCookie("connect.sid");
+        res.status(200).json({ message: "Logout success" });
+    });
+});
+
+sunnifyRouter.get("/check-session", (req, res) => {
+    if (req.session.userId) res.status(200).json({ loggedIn: true, userId: req.session.userId });
+    else res.status(200).json({ loggedIn: false, userId: null });
+});
+
 //sunnifyRouter.get("/", async (req, res) => {
 //    try {
 //        const result = await query("SELECT * FROM task");
 //        const rows = result.rows ? result.rows : [];
 //        res.status(200).json(rows);
-//    } catch (error) {
-//        errorResponse(res, error);
-//    }
-//});
-
-//sunnifyRouter.post("/new", async (req, res) => {
-//    try {
-//        const result = await query("INSERT INTO task (description) VALUES ($1) RETURNING *",
-//            [req.body.description]);
-//        res.status(200).json({ id: result.rows[0].id });
 //    } catch (error) {
 //        errorResponse(res, error);
 //    }
@@ -114,6 +133,6 @@ const errorResponse = (res, error) => {
     console.log(error);
     res.statusMessage = error;
     res.status(500).json({ error: error });
-}
+};
 
 module.exports = { sunnifyRouter };
