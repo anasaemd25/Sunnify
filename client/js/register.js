@@ -1,3 +1,7 @@
+import { usernameValidators } from "./validation/username.js";
+import { passwordValidators } from "./validation/password.js";
+import { emailValidators } from "./validation/email.js";
+
 const BACKEND_ROOT_URL = "http://127.0.0.1:3000";
 
 const form = document.querySelector(".auth-form");
@@ -25,11 +29,14 @@ form.addEventListener("submit", async (event) => {
     const passwordCheck = passwordCheckField.value.trim();
 
     // Input validation
-    const dataIsValid =
-        validateUsername(username) &&
-        validateEmail(email) &&
-        validatePassword(password) &&
-        validatePasswordMatch(password, passwordCheck);
+    const validationResults = [
+        validateUsername(username),
+        validateEmail(email),
+        validatePassword(password),
+        validatePasswordMatch(password, passwordCheck)
+    ];
+
+    const dataIsValid = validationResults.every(Boolean);
 
     if (!dataIsValid) return;
 
@@ -61,7 +68,7 @@ form.addEventListener("submit", async (event) => {
     }
 });
 
-// Username validation functions
+// Validation functions
 const validateUsername = (username) => {
     /*
         Username validation: 
@@ -81,16 +88,10 @@ const validateUsername = (username) => {
 
     // Special rules checking
     let errors = [];
-    const validationFunctions = [
-        checkUsernameLength,
-        checkUsernameStart,
-        checkUsernameValidCharacters,
-        checkUsernameRepeatingSpecialCharacters
-    ];
 
-    validationFunctions.forEach(fn => {
+    usernameValidators.forEach(fn => {
         const err = fn(username);
-        if (err) errors.push(`-${err}`);
+        if (err) errors.push(`- ${err}`);
     });
 
     if (errors.length > 0) {
@@ -106,38 +107,6 @@ const validateUsername = (username) => {
     }
 }
 
-const checkUsernameLength = (username) => {
-    const usernameLength = { min: 3, max: 30 };
-
-    if (username.length < usernameLength.min) return `Must be at least ${usernameLength.min} characters long`;
-    if (username.length > usernameLength.max) return `Must be less than ${usernameLength.max} characters long`;
-    return null;
-}
-
-const checkUsernameStart = (username) => {
-    const startRegex = /^[a-zA-Z]/;
-
-    if (!startRegex.test(username)) return "Must begin with a letter";
-    return null;
-}
-
-const checkUsernameValidCharacters = (username) => {
-    const allowedSpecialChars = "._-";
-    const charCheckRegex = RegExp(`^[a-zA-Z0-9${allowedSpecialChars}]+$`);
-
-    if (!charCheckRegex.test(username)) return `Allowed characters are letters, numbers, and ${allowedSpecialChars} special characters`;
-    return null;
-}
-
-const checkUsernameRepeatingSpecialCharacters = (username) => {
-    const allowedSpecialChars = "._-";
-    const specCharCheckRegex = RegExp(`[${allowedSpecialChars}]{2,}`);
-
-    if (specCharCheckRegex.test(username)) return "Cannot have more than 1 special character in a row";
-    return null;
-}
-
-// Email validation functions
 const validateEmail = (email) => {
     /*
         Email validation:
@@ -154,13 +123,10 @@ const validateEmail = (email) => {
 
     // Special rules checking
     let errors = [];
-    const validationFunctions = [
-        checkEmailFormat
-    ];
 
-    validationFunctions.forEach(fn => {
+    emailValidators.forEach(fn => {
         const err = fn(email);
-        if (err) errors.push(`-${err}`);
+        if (err) errors.push(`- ${err}`);
     });
 
     if (errors.length > 0) {
@@ -176,14 +142,6 @@ const validateEmail = (email) => {
     }
 }
 
-const checkEmailFormat = (email) => {
-    const emailValidationRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailValidationRegex.test(email)) return "Invalid email format, should be like someone@example.com";
-    return null;
-}
-
-// Password validation functions
 const validatePassword = (password) => {
     /*
         Password validation:
@@ -204,17 +162,10 @@ const validatePassword = (password) => {
 
     // Special rules checking
     let errors = [];
-    const validationFunctions = [
-        checkPasswordLength,
-        checkPasswordCapitalLetter,
-        checkPasswordLowercaseLetter,
-        checkPasswordNumber,
-        checkPasswordSpecialCharacter
-    ];
 
-    validationFunctions.forEach(fn => {
+    passwordValidators.forEach(fn => {
         const err = fn(password);
-        if (err) errors.push(`-${err}`);
+        if (err) errors.push(`- ${err}`);
     });
 
     if (errors.length > 0) {
@@ -230,43 +181,6 @@ const validatePassword = (password) => {
     }
 }
 
-const checkPasswordLength = (password) => {
-    const minLength = 8;
-
-    if (password.length < minLength) return `Must be at least ${minLength} characters long`;
-    return null;
-}
-
-const checkPasswordCapitalLetter = (password) => {
-    const capitalLetterRegex = /[A-Z]+/;
-
-    if (!capitalLetterRegex.test(password)) return "Must contain a capital letter";
-    return null;
-}
-
-const checkPasswordLowercaseLetter = (password) => {
-    const lowercaseLetterRegex = /[a-z]+/;
-
-    if (!lowercaseLetterRegex.test(password)) return "Must contain a lowercase letter";
-    return null;
-}
-
-const checkPasswordNumber = (password) => {
-    const numberRegex = /[0-9]+/;
-
-    if (!numberRegex.test(password)) return "Must contain a number";
-    return null;
-}
-
-const checkPasswordSpecialCharacter = (password) => {
-    const allowedSpecialCharacters = "-._+*!?$€&#";
-    const specialCharCheckRegex = RegExp(`[${allowedSpecialCharacters}]+`);
-
-    if (!specialCharCheckRegex.test(password)) return `Must contain at least 1 special character (${allowedSpecialCharacters})`;
-    return null;
-}
-
-// Password repeat validation
 const validatePasswordMatch = (password, passwordCheck) => {
     /*
         Repeat password validation:
