@@ -17,7 +17,8 @@ CREATE TABLE posts (
 	description TEXT NOT NULL,
 	price NUMERIC(10,2) NOT NULL CHECK (price >= 0),
 	user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-	created_at TIMESTAMP DEFAULT NOW()
+	created_at TIMESTAMP DEFAULT NOW(),
+	last_updated TIMESTAMP DEFAULT NOW()
 );
 
 CREATE TABLE post_images (
@@ -30,6 +31,6 @@ CREATE INDEX idx_posts_user_id ON posts(user_id);
 CREATE INDEX idx_post_images_post_id ON post_images(post_id);
 
 INSERT INTO users (username, email, password_hash) VALUES 
-('mpomahac', 'mpomahac25@students.oamk.fi', '$argon2id$v=19$m=65536,t=3,p=4$UZTWlz85dnyAm9sdp8LQhQ$mKp1CVNTk+ueVsh725mpK/XJSosDDJ+5LR3SzYN04AI'),
-('vgolovny', 'vgolovny25@students.oamk.fi', '$argon2id$v=19$m=65536,t=3,p=4$GxaOgLxFq9FGuXA4dHM6HQ$Ty9KmSsU2gM4Cm8OPpeEo5bg6CgOrqRwkxpWr7S5tnQ'),
-('aelmaoui', 'aelmaoui25@students.oamk.fi', '$argon2id$v=19$m=65536,t=3,p=4$dST5UiZWWxZtVpZF13oFRg$F++suM8BqysB3dyNVXbYPt/Mfq6Fs3zjC78/pnSqTQM');
+('mpomahac', 'mpomahac25@students.oamk.fi', '$argon2id$v=19$m=65536,t=3,p=4$I4OobjPOad2nUHnRbWcAfA$rK91z2HkrNwOWvAi2wPLJ+cCYnMGerq6waKt7+OD5BE'),
+('vgolovny', 'vgolovny25@students.oamk.fi', '$argon2id$v=19$m=65536,t=3,p=4$I4OobjPOad2nUHnRbWcAfA$rK91z2HkrNwOWvAi2wPLJ+cCYnMGerq6waKt7+OD5BE'),
+('aelmaoui', 'aelmaoui25@students.oamk.fi', '$argon2id$v=19$m=65536,t=3,p=4$I4OobjPOad2nUHnRbWcAfA$rK91z2HkrNwOWvAi2wPLJ+cCYnMGerq6waKt7+OD5BE');
