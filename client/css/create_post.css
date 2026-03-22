@@ -1,68 +1,54 @@
 .createpost-page {
-    display: flex;
-    flex-direction: column;
-    
     min-height: 100vh;
-    gap: 10px;
-    padding: 10px;
-}
-
-.createpost-content {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 10px;
+    background: #f8f9fa;
 }
 
-/* TITLE */
-.form-title {
-    text-align: center;
+.createpost-tip-card,
+.createpost-form-card,
+.createpost-preview-card {
+    border-radius: 1.5rem;
 }
 
-/* FORM BLOCK */
-.form-block {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-/* INPUTS */
-.form-input {
-    height: 35px;
-}
-
-.form-textarea {
-    height: 100px;
-}
-
-/* DROPDOWN MOCK */
-.dropdown {
-    height: 35px;
-}
-
-/* IMAGE UPLOAD */
-.image-upload {
-    display: flex;
-    gap: 10px;
+.createpost-textarea {
+    min-height: 160px;
+    resize: vertical;
 }
 
 .upload-box {
-    width: 80px;
-    height: 80px;
-}
-
-/* ACTION BUTTONS */
-.form-actions {
+    min-height: 140px;
+    border: 1px dashed #ced4da;
+    border-radius: 1rem;
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #6c757d;
 }
 
-.submit-btn,
-.cancel-btn {
-    flex: 1;
-    height: 40px;
+.upload-box:hover {
+    border-color: #0d6efd;
+    color: #0d6efd;
+    background: #f8fbff;
+}
+
+.createpost-preview-media {
+    height: 220px;
+}
+
+.createpost-checklist {
+    padding-top: 0.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+@media (max-width: 767.98px) {
+    .upload-box {
+        min-height: 110px;
+    }
+
+    .createpost-preview-media {
+        height: 180px;
+    }
 }

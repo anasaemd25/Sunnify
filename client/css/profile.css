@@ -1,78 +1,78 @@
-.profile-page-example{
-    display: flex;
-    flex-direction: column;
+.profile-page-example {
     min-height: 100vh;
-    gap: 10px;
-    padding: 10px;
-}
-
-.profile {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    background: #f8f9fa;
 }
 
-.profile-card{
-    display: flex;
-    gap: 8px;
-    padding: 10px;
+.profile-hero {
+    border-radius: 1.5rem;
 }
 
-.profile-card_info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    flex: 1;
-}
-
-.profile-card_since,
-.profile-card_edit{
-    margin-top: 5px;
-}
-
-.profile-card_image{
+.profile-avatar {
     width: 120px;
     height: 120px;
+    background: linear-gradient(135deg, #0d6efd, #6ea8fe);
+    box-shadow: 0 1rem 2rem rgba(13, 110, 253, 0.2);
 }
 
-.profile-menu {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
+.profile-stats .stat-card {
+    height: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(13, 110, 253, 0.12);
+    border-radius: 1rem;
+    background: #fff;
 }
 
-.profile-menu_item{
-    flex: 1;
-    text-align: center;
-    font-size: 12px;
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.1;
 }
 
-.posts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    padding: 10px;
+.stat-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 0.35rem;
 }
 
-.post {
-    height: 120px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.profile-menu .nav-link {
+    border-radius: 999px;
+    color: #495057;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    padding-inline: 1rem;
 }
 
-.profile-reviews {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+.profile-menu .nav-link.active {
+    background: #0d6efd;
+    border-color: #0d6efd;
 }
 
-.show-more-btn {
-    grid-column: 1 /-1;
-    height: 40px;
-    text-align: center;
+.profile-card-media {
+    height: 220px;
 }
 
+.review-card,
+#settings .card {
+    border-radius: 1.25rem;
+}
 
+.review-avatar {
+    width: 52px;
+    height: 52px;
+    background: #e9ecef;
+    color: #495057;
+    flex-shrink: 0;
+}
 
+@media (max-width: 767.98px) {
+    .profile-avatar {
+        width: 96px;
+        height: 96px;
+    }
+
+    .profile-card-media {
+        height: 180px;
+    }
+}
