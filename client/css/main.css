@@ -1,104 +1,29 @@
-@media(min-width:780px){
-    .posts{
-        grid-template-columns: repeat(5, 1fr)
-    }
+/* Cleaned and minimal CSS for Sunnify */
+
+.img-holder {
+    background-color: blueviolet !important;
+    border-radius: 1rem;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-}
-
-.main-page {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.container {
-    max-width: 1200px;
-}
-
-.posts {
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-
-.footer {
-    margin-top: auto;
-}
-
-.login-btn{
-    border-radius: 6px;
-}
-
-.login-link{
-    text-decoration: none;
-    color:#0d6efd;
-}
-
-.post-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+.img-container {
+    border-radius: 1rem;
     overflow: hidden;
-    transition: box-shadow 0.3s ease;
 }
 
-.post-card:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.post-card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    background-color: #d3d3d3;
-}
-
-.post-card-content {
-    padding: 12px;
-}
-
-.post-card-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0 0 8px 0;
-    color: #333;
-    line-height: 1.4;
-}
-
-.post-card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.post-card-price {
-    font-size: 16px;
-    font-weight: 700;
-    color: #e74c3c;
-}
-
-.post-card-save {
-    background: none;
+.favorite-btn {
     border: none;
-    font-size: 18px;
-    color: #999;
-    cursor: pointer;
-    padding: 4px 8px;
-    transition: color 0.3s ease;
 }
 
-.post-card-save:hover {
-    color: #e74c3c;
+.card {
+    border: none !important;
 }
 
-.post-card-location {
-    font-size: 13px;
-    color: #999;
-    margin: 0;
-    line-height: 1.4;
+.card-footer {
+    border-top: none !important;
+    background: none !important;
+}
+
+.footer a:hover,
+.footer i:hover {
+    color: #0a58ca !important;
 }
