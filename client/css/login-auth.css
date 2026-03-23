@@ -1,3 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body, .auth-page {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
 .auth-page {
     display: flex;
     flex-direction: column;
@@ -63,3 +75,4 @@ span.auth-error {
 .hidden {
     display: none;
 }
+
