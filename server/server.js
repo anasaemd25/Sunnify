@@ -47,6 +47,14 @@ app.get("/post/create", (req, res) => {
     res.sendFile(path.join(client, "createpost.html"));
 });
 
+app.get("/demo/1", (req, res) => {
+    res.sendFile(path.join(client, "/tech-examples/reusable-html/demo.html"));
+});
+
+app.get("/demo/2", (req, res) => {
+    res.sendFile(path.join(client, "/tech-examples/reusable-html/demo2.html"));
+})
+
 app.use("/", sunnifyRouter);
 
 const port = process.env.BACKEND_PORT;
